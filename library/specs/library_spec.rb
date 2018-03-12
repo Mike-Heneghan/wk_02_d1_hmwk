@@ -65,33 +65,32 @@ class TestLibrary < Minitest::Test
     assert_equal(@library_of_books, result)
   end
 
-  def test_find_book_by_name
+  def test_get_details_from_title
     library  = Library.new(@library_of_books)
-    result = library.find_book_by_name(library, "a_scanner_darkly")
-    answer = [{
-        title: "a_scanner_darkly",
-        rental_details:
-        {
-          student_name: "Simon",
-          date: "23/5/17"
-        }}]
+
+    result = library.get_details_from_title("a_scanner_darkly")
+
+    answer = {
+      title: "a_scanner_darkly",
+      rental_details:
+      {
+        student_name: "Simon",
+        date: "23/5/17"
+      }}
+
     assert_equal(answer, result)
   end
-  # def test_details_from_title
-  #   library  = Library.new(@library_of_books)
-  #
-  #   result = library.details_from_title("a_scanner_darkly")
-  #   answer = [{
-  #     title: "a_scanner_darkly",
-  #     rental_details:
-  #     {
-  #       student_name: "Simon",
-  #       date: "23/5/17"
-  #     }}]
-  #
-  #   assert_equal(@library_of_books, result)
-  # end
 
+  def test_get_rental_details_from_title
+    library  = Library.new(@library_of_books)
+    result = library.get_rental_details_from_title("a_scanner_darkly")
+    answer =
+      {
+        student_name: "Simon",
+        date: "23/5/17"
+      }
+    assert_equal(answer, result)
+  end
 
 
 
