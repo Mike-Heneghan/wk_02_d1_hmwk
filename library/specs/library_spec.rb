@@ -92,9 +92,50 @@ class TestLibrary < Minitest::Test
     assert_equal(answer, result)
   end
 
+  def test_add_new_book
+    library  = Library.new(@library_of_books)
+    result = library.add_new_book("a_confederacy_of_dunces")
+    assert_equal(5, result.count)
+  end
 
+  def test_update_rental_details
+    library  = Library.new(@library_of_books)
+    result = library.update_rental_details("a_scanner_darkly", "Mike", "12/3/18")
+    answer = [
+      {
+        title: "lord_of_the_rings",
+        rental_details:
+        {
+          student_name: "Jeff",
+          date: "01/12/16"
+        }
+      },
+      {
+        title: "sapiens",
+        rental_details:
+        {
+          student_name: "Mike",
+          date: "10/02/17"
+        }
+      },
+      {title: "a_scanner_darkly",
+        rental_details:
+        {
+          student_name: "Mike",
+          date: "12/3/18"
+          }},
+          {
+            title: "ruby_for_beginners",
+            rental_details:
+            {
+              student_name: "Pawel",
+              date: "17/02/18"
+            }
+          }
+      ]
 
-
+    assert_equal(answer, result)
+  end
 
 
 
